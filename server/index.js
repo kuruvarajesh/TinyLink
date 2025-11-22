@@ -44,45 +44,30 @@ app.get('/healthz', async (req, res) => {
 // API Routes
 app.use('/api', apiRoutes);
 
-// Production: Serve static files and handle redirects
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../dist')));
-
-  // Redirect handler (before React catch-all)
-  app.get('/:code([A-Za-z0-9]{6,8})', async (req, res, next) => {
-    try {
-      const { code } = req.params;
-      const link = await Link.findByCode(code);
-      if (link) {
-        await Link.incrementClicks(code);
-        return res.redirect(302, link.original_url);
-      }
-      next();
-    } catch (error) {
-      next(error);
+// Redirect handler - MUST be before static files
+app.get('/:code([A-Za-z0-9]{6,8})', async (req, res, next) => {
+  try {
+    const { code } = req.params;
+    const link = await Link.findByCode(code);
+    
+    if (link) {
+      await Link.incrementClicks(code);
+      return res.redirect(302, link.original_url);
     }
-  });
+    // If not found, pass to next handler (React app will show 404)
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
-  // React app catch-all
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-  });
-} else {
-  // Development: Redirect handler only
-  app.get('/:code([A-Za-z0-9]{6,8})', async (req, res, next) => {
-    try {
-      const { code } = req.params;
-      const link = await Link.findByCode(code);
-      if (link) {
-        await Link.incrementClicks(code);
-        return res.redirect(302, link.original_url);
-      }
-      res.status(404).json({ error: 'Link not found' });
-    } catch (error) {
-      next(error);
-    }
-  });
-}
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// React app catch-all (for client-side routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 // Error handler
 app.use(errorHandler);
