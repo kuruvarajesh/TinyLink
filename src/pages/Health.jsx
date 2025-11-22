@@ -1,6 +1,4 @@
-// ============================================
-// src/pages/Health.jsx
-// ============================================
+
 import { useState, useEffect } from 'react'
 import Spinner from '../components/Spinner'
 import { api } from '../api/links'

@@ -1,7 +1,5 @@
 
-// ============================================
-// src/utils/helpers.js
-// ============================================
+
 export const validateUrl = (url) => {
   try {
     const urlObj = new URL(url)

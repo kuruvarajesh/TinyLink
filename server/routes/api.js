@@ -1,6 +1,3 @@
-// ============================================
-// server/routes/api.js
-// ============================================
 import express from 'express';
 import { createLink, getAllLinks, getLinkStats, deleteLink } from '../controllers/linkController.js';
 

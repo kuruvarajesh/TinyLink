@@ -1,6 +1,4 @@
-// ============================================
-// src/components/LinkForm.jsx
-// ============================================
+
 import { useState } from 'react'
 import { api } from '../api/links'
 import { validateUrl, validateCode, getBaseUrl, copyToClipboard } from '../utils/helpers'

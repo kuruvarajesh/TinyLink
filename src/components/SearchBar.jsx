@@ -1,6 +1,4 @@
-// ============================================
-// src/components/SearchBar.jsx
-// ============================================
+
 import { useState } from 'react'
 
 function SearchBar({ onSearch, initialValue = '' }) {
