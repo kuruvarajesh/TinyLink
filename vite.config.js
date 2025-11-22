@@ -16,6 +16,11 @@ export default defineConfig({
       '/healthz': {
         target: 'http://localhost:5000',
         changeOrigin: true
+      },
+      // Proxy short code redirects (6–8 alphanumeric characters)
+      '^/[A-Za-z0-9]{6,8}$': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
       }
     }
   },
