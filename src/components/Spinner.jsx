@@ -1,6 +1,4 @@
-// ============================================
-// src/components/Spinner.jsx
-// ============================================
+
 function Spinner({ size = 'medium' }) {
   return (
     <div className={`spinner-container spinner-${size}`}>

@@ -1,6 +1,4 @@
-// ============================================
-// src/pages/Stats.jsx
-// ============================================
+
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import Spinner from '../components/Spinner'

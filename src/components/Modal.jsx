@@ -1,6 +1,4 @@
-// ============================================
-// src/components/Modal.jsx
-// ============================================
+
 function Modal({ isOpen, title, children, onClose, onConfirm, confirmText = 'Confirm', confirmDanger = false, loading = false }) {
   if (!isOpen) return null
 

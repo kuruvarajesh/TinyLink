@@ -1,6 +1,4 @@
-// ============================================
-// src/components/LinkTable.jsx
-// ============================================
+
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { formatDate, getBaseUrl, copyToClipboard } from '../utils/helpers'

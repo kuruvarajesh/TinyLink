@@ -1,6 +1,3 @@
-// ============================================
-// server/models/Link.js
-// ============================================
 import db from '../config/database.js';
 
 const Link = {

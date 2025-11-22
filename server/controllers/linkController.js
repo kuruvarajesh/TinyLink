@@ -1,6 +1,3 @@
-// ============================================
-// server/controllers/linkController.js
-// ============================================
 import Link from '../models/Link.js';
 
 const validateUrl = (url) => {

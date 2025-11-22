@@ -1,6 +1,4 @@
-// ============================================
-// src/pages/Dashboard.jsx
-// ============================================
+
 import { useState, useEffect, useCallback } from 'react'
 import LinkForm from '../components/LinkForm'
 import SearchBar from '../components/SearchBar'
